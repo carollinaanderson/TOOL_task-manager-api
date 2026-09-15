@@ -1,4 +1,4 @@
-# Task Manager API
+# task manager api
 
 > A production-shaped REST API built with **Clean Architecture** — task CRUD, JWT authentication, PostgreSQL persistence, containerized, tested, and CI/CD-ready.
 
