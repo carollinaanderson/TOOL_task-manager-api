@@ -10,7 +10,7 @@ FROM base AS runtime
 COPY --from=deps /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY app ./app
 COPY alembic.ini .
-COPY migrations ./migrations
+COPY app/migrations ./app/migrations
 RUN useradd --create-home appuser
 USER appuser
 EXPOSE 8000
