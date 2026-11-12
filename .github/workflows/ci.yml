@@ -26,8 +26,13 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Lint
         run: ruff check app tests
-      - name: Security scan
+      - name: Security scan (code)
         run: bandit -r app -q
+      - name: Security scan (secrets, full git history)
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/gitleaks/gitleaks/master/scripts/install.sh \
+            | sh -s -- -b /usr/local/bin
+          gitleaks git . --no-banner --redact
       - name: Migrate
         run: alembic upgrade head
       - name: Tests
